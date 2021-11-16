@@ -1,16 +1,21 @@
 import React, { useState } from "react";
-import { Image } from "react-native";
+import { Image, useColorScheme } from "react-native";
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import { Asset } from "expo-asset";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  DarkTheme,
+  DefaultTheme,
+  NavigationContainer,
+} from "@react-navigation/native";
 import Tabs from "./navigation/Tabs";
 
 export default function App() {
   // const [assets] = useAssets([require("./assets/quokka.jpeg")]);
   // const [fonts] = Font.useFonts(Ionicons.font);
   const [ready, setReady] = useState(false);
+  const isDark = useColorScheme() === "dark";
 
   const loadFonts = (fontsArr) => fontsArr.map((font) => Font.loadAsync(font));
   const loadImages = (imagesArr) =>
@@ -44,7 +49,7 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={isDark ? DarkTheme : DefaultTheme}>
       <Tabs />
     </NavigationContainer>
   );
