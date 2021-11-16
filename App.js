@@ -4,6 +4,8 @@ import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import { Asset } from "expo-asset";
+import { NavigationContainer } from "@react-navigation/native";
+import Tabs from "./navigation/Tabs";
 
 export default function App() {
   // const [assets] = useAssets([require("./assets/quokka.jpeg")]);
@@ -41,5 +43,9 @@ export default function App() {
     );
   }
 
-  return null;
+  return (
+    <NavigationContainer>
+      <Tabs />
+    </NavigationContainer>
+  );
 }
