@@ -1,9 +1,18 @@
 import React from "react";
-import { View, Text } from "react-native";
+import styled from "styled-components/native";
 
-const Movies = () => (
-  <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-    <Text>Movies</Text>
+const View = styled.TouchableOpacity`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Title = styled.Text``;
+
+const Movies = ({ navigation: { navigate } }) => (
+  <View onPress={() => navigate("Stack", { screen: "One" })}>
+    <Title>Movies</Title>
   </View>
 );
+
 export default Movies;
