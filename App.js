@@ -6,7 +6,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { Asset } from "expo-asset";
 import { NavigationContainer } from "@react-navigation/native";
 import { ThemeProvider } from "styled-components/native";
-import { darkTheme, lightTheme } from "./styled";
+import { darkTheme, lightTheme } from "./styles";
 import Root from "./navigation/Root";
 
 export default function App() {
