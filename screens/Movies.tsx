@@ -1,25 +1,16 @@
 import React from "react";
-import { ActivityIndicator, Dimensions, FlatList } from "react-native";
+import { Dimensions, FlatList } from "react-native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import Swiper from "react-native-swiper";
 import styled from "styled-components/native";
 import HMedia from "../components/HMedia";
 import Slide from "../components/Slide";
-import VMedia from "../components/VMedia";
 import { useQuery, useQueryClient } from "react-query";
 import { MovieResponse, moviesApi } from "../api";
+import Loader from "../components/Loader";
+import HList from "../components/HList";
 
 const { height: SCREEN_HEIGHT } = Dimensions.get("window");
-
-const Loader = styled.View`
-  flex: 1;
-  justify-content: center;
-  align-items: center;
-`;
-
-const TrendingContainer = styled.View`
-  margin-bottom: 40px;
-`;
 
 const TrendingTitle = styled.Text`
   color: ${(props) => props.theme.textColor};
@@ -28,17 +19,10 @@ const TrendingTitle = styled.Text`
   margin-left: 20px;
 `;
 
-const TrendingScroll = styled.FlatList`
-  margin-top: 20px;
-` as unknown as typeof FlatList;
-
 const ComingSoonTitle = styled(TrendingTitle)`
   margin-bottom: 20px;
 `;
 
-const VSeperator = styled.View`
-  width: 20px;
-`;
 const HSeperator = styled.View`
   height: 20px;
 `;
@@ -69,11 +53,10 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = () => {
   };
 
   return loading ? (
-    <Loader>
-      <ActivityIndicator />
-    </Loader>
+    <Loader />
   ) : upcomingData ? (
     <FlatList
+      showsVerticalScrollIndicator={false}
       onRefresh={onRefresh}
       refreshing={refreshing}
       ListHeaderComponent={
@@ -103,24 +86,7 @@ const Movies: React.FC<NativeStackScreenProps<any, "Movies">> = () => {
             ))}
           </Swiper>
           {trendingData ? (
-            <TrendingContainer>
-              <TrendingTitle>Trending Movies</TrendingTitle>
-              <TrendingScroll
-                data={trendingData?.results}
-                horizontal
-                keyExtractor={(item) => item.id + ""}
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{ paddingHorizontal: 20 }}
-                ItemSeparatorComponent={VSeperator}
-                renderItem={({ item }) => (
-                  <VMedia
-                    posterPath={item.poster_path || ""}
-                    originalTitle={item.original_title}
-                    voteAverage={item.vote_average}
-                  />
-                )}
-              />
-            </TrendingContainer>
+            <HList title="Trending Movies" data={trendingData.results} />
           ) : null}
           <ComingSoonTitle>Coming soon</ComingSoonTitle>
         </>
