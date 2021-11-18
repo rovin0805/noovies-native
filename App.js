@@ -8,22 +8,25 @@ import { NavigationContainer } from "@react-navigation/native";
 import { ThemeProvider } from "styled-components/native";
 import { darkTheme, lightTheme } from "./styles";
 import Root from "./navigation/Root";
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
+
+const loadFonts = (fontsArr) => fontsArr.map((font) => Font.loadAsync(font));
+const loadImages = (imagesArr) =>
+  imagesArr.map((image) => {
+    if (typeof image === "string") {
+      return Image.prefetch(image);
+    } else {
+      return Asset.loadAsync(image);
+    }
+  });
 
 export default function App() {
   // const [assets] = useAssets([require("./assets/quokka.jpeg")]);
   // const [fonts] = Font.useFonts(Ionicons.font);
   const [ready, setReady] = useState(false);
   const isDark = useColorScheme() === "dark";
-
-  const loadFonts = (fontsArr) => fontsArr.map((font) => Font.loadAsync(font));
-  const loadImages = (imagesArr) =>
-    imagesArr.map((image) => {
-      if (typeof image === "string") {
-        return Image.prefetch(image);
-      } else {
-        return Asset.loadAsync(image);
-      }
-    });
 
   const startLoading = async () => {
     const fonts = loadFonts([Ionicons.font]);
@@ -47,10 +50,12 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
-      <NavigationContainer>
-        <Root />
-      </NavigationContainer>
-    </ThemeProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={isDark ? darkTheme : lightTheme}>
+        <NavigationContainer>
+          <Root />
+        </NavigationContainer>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 }

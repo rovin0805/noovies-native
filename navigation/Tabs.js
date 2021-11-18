@@ -14,6 +14,7 @@ const Tabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
+        unmountOnBlur: true,
         tabBarStyle: {
           backgroundColor: isDark ? BLACK_COLOR : "white",
         },
