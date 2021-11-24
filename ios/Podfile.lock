@@ -16,6 +16,8 @@ PODS:
   - EXJSONUtils (0.2.0)
   - EXKeepAwake (10.0.0):
     - ExpoModulesCore
+  - EXLinearGradient (10.0.3):
+    - ExpoModulesCore
   - EXManifests (0.2.2):
     - EXJSONUtils
   - Expo (43.0.3):
@@ -33,6 +35,8 @@ PODS:
     - EXUpdatesInterface
     - React-Core
   - EXUpdatesInterface (0.4.0)
+  - EXWebBrowser (10.0.3):
+    - ExpoModulesCore
   - FBLazyVector (0.64.3)
   - FBReactNativeSpec (0.64.3):
     - RCT-Folly (= 2020.01.13.00)
@@ -347,6 +351,7 @@ DEPENDENCIES:
   - EXFont (from `../node_modules/expo-font/ios`)
   - EXJSONUtils (from `../node_modules/expo-json-utils/ios`)
   - EXKeepAwake (from `../node_modules/expo-keep-awake/ios`)
+  - EXLinearGradient (from `../node_modules/expo-linear-gradient/ios`)
   - EXManifests (from `../node_modules/expo-manifests/ios`)
   - Expo (from `../node_modules/expo/ios`)
   - ExpoModulesCore (from `../node_modules/expo-modules-core/ios`)
@@ -354,6 +359,7 @@ DEPENDENCIES:
   - EXStructuredHeaders (from `../node_modules/expo-structured-headers/ios`)
   - EXUpdates (from `../node_modules/expo-updates/ios`)
   - EXUpdatesInterface (from `../node_modules/expo-updates-interface/ios`)
+  - EXWebBrowser (from `../node_modules/expo-web-browser/ios`)
   - FBLazyVector (from `../node_modules/react-native/Libraries/FBLazyVector`)
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
@@ -411,6 +417,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-json-utils/ios"
   EXKeepAwake:
     :path: "../node_modules/expo-keep-awake/ios"
+  EXLinearGradient:
+    :path: "../node_modules/expo-linear-gradient/ios"
   EXManifests:
     :path: "../node_modules/expo-manifests/ios"
   Expo:
@@ -425,6 +433,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/expo-updates/ios"
   EXUpdatesInterface:
     :path: "../node_modules/expo-updates-interface/ios"
+  EXWebBrowser:
+    :path: "../node_modules/expo-web-browser/ios"
   FBLazyVector:
     :path: "../node_modules/react-native/Libraries/FBLazyVector"
   FBReactNativeSpec:
@@ -499,6 +509,7 @@ SPEC CHECKSUMS:
   EXFont: 6e8f77d9741f5cd83f710adbf26ebb57a036283b
   EXJSONUtils: bafb27ed20417c018d942f334d969102e67be7e5
   EXKeepAwake: ca4071fb63b89a70b13d33f6147cf9b5433c122a
+  EXLinearGradient: b00b2b1aad2de9b87b8f63c948a1fa16d24efe7b
   EXManifests: 15831e369de4e989f9cfe8c3321303f26745e41d
   Expo: a3a1b909b62e388a0fd0c9bedb48b16e294b4050
   ExpoModulesCore: c092c00c13403aa2acbf79973a00d6606732eb68
@@ -506,6 +517,7 @@ SPEC CHECKSUMS:
   EXStructuredHeaders: 7d4a100b8321c6db341e91e730949558d4a48818
   EXUpdates: c6dcdb9a33cfb7d81cbe288e1ac7484fcda663d9
   EXUpdatesInterface: 2413d24feea140d6b30f6c73ec7f7e0281d3594a
+  EXWebBrowser: ecb70d9e6edb279d9b10b2bbc9ad4320fcdc4060
   FBLazyVector: c71c5917ec0ad2de41d5d06a5855f6d5eda06971
   FBReactNativeSpec: c291822cfd196b59cecee1807801afaf1c040ae9
   glog: 73c2498ac6884b13ede40eda8228cb1eee9d9d62
