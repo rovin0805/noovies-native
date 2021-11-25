@@ -9,7 +9,7 @@ import {
 import styled from "styled-components/native";
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { LinearGradient } from "expo-linear-gradient";
-import { Movie, moviesApi, TV, tvApi } from "../api";
+import { MovieDetails, moviesApi, tvApi, TVDetails } from "../api";
 import Poster from "../components/Poster";
 import { makeImgPath } from "../utils";
 import { BLACK_COLOR } from "../styles";
@@ -67,7 +67,7 @@ const BtnText = styled.Text`
 `;
 
 type RootStackParamList = {
-  Detail: Movie | TV;
+  Detail: MovieDetails | TVDetails;
 };
 
 type DetailScreenProps = NativeStackScreenProps<RootStackParamList, "Detail">;

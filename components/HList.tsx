@@ -3,6 +3,7 @@ import { FlatList } from "react-native";
 import styled from "styled-components/native";
 import VMedia from "./VMedia";
 import { Movie, TV } from "../api";
+import { FetchNext, loadMore } from "../utils";
 
 const ListContainer = styled.View`
   margin-bottom: 40px;
@@ -22,14 +23,22 @@ export const HListSeparator = styled.View`
 
 interface HListProps {
   title: string;
-  data: Movie[] | TV[];
+  data: Movie[] | TV[] | undefined;
+  hasNextPage: boolean | undefined;
+  fetchNextPage: FetchNext;
 }
 
-const HList: React.FC<HListProps> = ({ title, data }) => (
+const HList: React.FC<HListProps> = ({
+  title,
+  data,
+  hasNextPage,
+  fetchNextPage,
+}) => (
   <ListContainer>
     <ListTitle>{title}</ListTitle>
     <FlatList
       data={data}
+      onEndReached={() => loadMore(hasNextPage, fetchNextPage)}
       horizontal
       showsHorizontalScrollIndicator={false}
       ItemSeparatorComponent={HListSeparator}
